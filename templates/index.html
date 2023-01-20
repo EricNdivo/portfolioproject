@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>Landing page responsive portfolio</title>
+    </head>
+    <body>
+
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert.dismissible fade show" role="alert">
+            <strong>Message:</strong>{{ message }}
+            <button type="button" class="close" data-dismiss="alert aria-label=Close">
+            </button>
+            <span aria-hidden="true">&times;</span>
+        </div>
+        {% endfor %}
+
+
+
+        <!-- OVERLAY -->
+        <div class="overlay first"></div>
+        <div class="overlay second"></div>
+        <div class="overlay third"></div>
+
+        <!-- HEADER -->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="contact" class="nav__logo">Contact</a>
+                </div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="home" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="services" class="nav__link">Services</a></li>
+                        <li class="nav__item"><a href="blog" class="nav__link">Blog</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav__item"><a href="logout" class="nav__link">logout</a></li>
+                        {% else %}
+                        <li class="nav__item"><a href="login" class="nav__link">login</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <ion-icon name="menu"></ion-icon>
+                </div>
+            </nav>
+        </header>
+
+        <!-- MAIN -->
+        <main class="l-main bd-grid">
+            <div class="home">
+                <div class="home__information">
+                    <span class="home__pressent anime-text">Hello, My name is</span>
+                    <h1 class="home__title anime-text">EricNdivo </h1>
+                    <span class="home__skill anime-text">Backend Developer</span>
+                        <div>
+                            <a href="download_pdf" class="home__button anime-text" download="{{post.admin.upload.url}}">DOWNLOAD CV</a>
+                        </div>
+                </div>
+
+                <div class="home__img">
+                    <img src="{% static 'images/DSC_0512 (4).JPG' %}" alt="">
+                </div>
+                
+                <div class="home__social">
+                    <ion-icon name="logo-facebook" class="home__social-icon"><a href="facebook"></a></ion-icon>
+                    <ion-icon name="logo-instagram" class="home__social-icon"></ion-icon>
+                    <ion-icon name="logo-twitter" class="home__social-icon"></ion-icon><a href="twitter"></a>
+                </div>
+
+            </div>
+        </main>
+
+
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+
+        <!-- MAIN -->
+        <script src="{% static 'js/main.js' %}"></script>
+    
+        <!-- ICONS -->
+        <script  type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    </body>
+</html>

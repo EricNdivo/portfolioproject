@@ -1,0 +1,78 @@
+body
+{
+ text-align:center;
+ width:100%;
+ margin:0 auto;
+ padding:0px;
+ font-family:helvetica;
+ background-color:#E0ECF8;
+}
+background{
+    color: black;
+}
+#wrapper
+{
+ text-align:center;
+ margin:0 auto;
+ padding:0px;
+ width:995px;
+}
+#price_columns
+{
+ float:left;
+ margin-left:45px;
+}
+.columns 
+{
+ float: left;
+ width: 300px;
+ box-sizing:border-box;
+ background-color:white;
+ font-family: Verdana,sans-serif;
+}
+#second_col
+{
+ border-left:2px solid #086A87;
+ border-right:2px solid #086A87;
+}
+.columns .price_name 
+{
+ background-color: #2E9AFE;
+ color: white;
+ font-size: 35px;
+ border:none;
+ font-weight:bold;
+}
+.columns .price
+{
+ background-color: #2E9AFE;
+ color: #0B2F3A;
+ font-size: 25px;
+ border: none;
+}
+.columns li 
+{
+ list-style-type:none;
+ border-bottom: 1px dashed #CEE3F6;
+ height:70px;
+ line-height:70px;
+ text-align: center;
+}
+
+.columns .grey 
+{
+ background-color: #eee;
+ font-size: 20px;
+}
+
+.columns .select_price 
+{
+ background-color: #0489B1;
+ border:none;
+ border-bottom: 5px solid #0B4C5F;
+ color: white;
+ width:120px;
+ height:45px;
+ font-size: 17px;
+ border-radius:2px;
+}

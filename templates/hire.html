@@ -1,0 +1,40 @@
+{% load static %}
+
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'Htmlfrontend/css/pricing.css' %}">
+</head>
+<body style="background-color:black">
+    <div class="background-image"></div>
+<div id="wrapper">
+
+<div id="price_columns">
+ <div class="columns">
+  <li class="price_name">BASIC</li>
+  <li class="price"><small>$</small><big>9.99</big><small>/year</small></li>
+  <li class="detail">Web Development and Design</li>
+  <li class="select_button"><input type="button" class="select_price" value="SELECT"></li>
+ </div>
+
+ <div class="columns" id="second_col">
+  <li class="price_name">HOSTING SERVICES</li>
+  <li class="price"><small>$</small><big>14.99</big><small>/year</small></li>
+  <li class="select_button"><input type="button" class="select_price" value="SELECT"></li>
+ </div>
+
+ <div class="columns">
+  <li class="price_name">PREMIUM</li>
+  <li class="price"><small>$</small><big>24.99</big><small>/year</small></li>
+  <li class="detail">Bank Hacking</li>
+  <li class="detail">Server Hacking</li>
+  <li class="detail">Powershell Hacking</li>
+  <li class="detail">Advanced Malware Scripting</li>
+  <li class="select_button"><input type="button" class="select_price" value="SELECT"></li>
+ </div>
+</div>
+
+</div>
+</body>
+<style>
+</style>
+</html>
