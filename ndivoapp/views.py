@@ -16,7 +16,7 @@ from django.shortcuts import render
 
 def index(request):
     context={'file':PdfFile.objects.all()}
-    return render(request, 'templates/index.html',context)
+    return render(request, 'templates/index.html', context)
 def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -49,7 +49,7 @@ def signup(request):
 
         #Welcome Email
 
-        subject = "Welcome to FIN7-Django Login"
+        subject = "Welcome to FIN7 Login"
         message = ("Hello" + username + "!!\n" + "Confirmation Email sent to your email address\n" + "Check your Inbox to activate your account")
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
@@ -127,7 +127,6 @@ def upload_pdf(request):
 def download_pdf(request):
     pdf = pdf.objects.first()
     response = HttpResponse(pdf.file, content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename="{pdf.file.name}"'
     return response 
 
 def services(request):
