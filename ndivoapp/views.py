@@ -107,6 +107,7 @@ def about(request):
     return render(request, 'about.html')
 
 def download_file(request,path):
+    print(request.user)
     file_path=os.path.join(settings.MEDIA_ROOT,path)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as enm:
@@ -154,6 +155,7 @@ def mobdev(request):
 def readmore(request):
     print(request.user)
     return HttpResponse("In Development")
+
 def hire(request):
     print(request.user)
     return render(request, 'hire.html')
