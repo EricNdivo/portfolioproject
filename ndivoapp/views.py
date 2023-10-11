@@ -140,21 +140,41 @@ def blog(request):
 def homepage(request):
     return redirect('/')
 
-def facebook(request):
+def linkedin_profile(request):
     print(request.user)
-    return redirect(request)
+    linkedln_handle = "Eric Ndivo"
+    linkedln_url = f"https://www.linkedin.com/in/eric-ndivo/"
+    
+    return HttpResponseRedirect(linkedln_url)
 
 def instagram(request):
-    pass
+    instagram_handle = "eric.ndivo"
+    instagram_url = f"https://www.instagram.com/EricNdivo/"
+    
+    return HttpResponseRedirect(instagram_url)
+
+def x(request):
+    print(request.user)
+    x_handle = "j_69whiskey"
+    x_url = f"https://www.x.com/j_69whiskey/"
+    
+    return HttpResponseRedirect(x_url)
+
+
 def webdev(request):
     print(request.user)
     return HttpResponse("In Development")
+
+
 def mobdev(request):
     print(request.user)
     return HttpResponse("In Development")
+
+
 def readmore(request):
     print(request.user)
     return HttpResponse("In Development")
+
 
 def hire(request):
     print(request.user)

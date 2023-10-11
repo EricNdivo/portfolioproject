@@ -15,7 +15,7 @@ urlpatterns = [
     path('home', views.homepage, name='home'),
     path('about', views.about, name='about'),
     path('download', views.download_file, name='download_file'),
-    path('facebook', views.facebook, name='facebook'),
+    path('linkedin_profile', views.linkedin_profile, name='linkedin_profile'),
     path('instagram', views.instagram, name='instagram'),
     path('webdev', views.webdev, name='webdev'),
     path('mobdev', views.mobdev, name='mobdev'),
@@ -23,6 +23,7 @@ urlpatterns = [
     path('hire', views.hire, name='hire'),
     path('upload/', views.upload_pdf, name='upload_pdf'),
     path('download/',views.download_pdf, name='download-pdf'),
+    path('x', views.x,name='x'),
 
 ]
 
