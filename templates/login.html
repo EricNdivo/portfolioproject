@@ -1,37 +1,76 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>login</title>
-	<link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <style>
+        .messages {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white; 
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            transition: opacity 1s;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var overlay = document.querySelector('.overlay');
+            var messages = document.querySelector('.messages');
+
+            if (messages) {
+                setTimeout(function () {
+                    messages.style.opacity = '0';
+                    setTimeout(function () {
+                        overlay.style.display = 'none';
+                    }, 1000); 
+                }, 3000); 
+        });
+    </script>
 </head>
 <body>
  <div class="container">
- 	<div class="header">
- 		<h1>Lo<span>gin</span></h1>
- 	</div>
- 	<div class="main">
- 		<form action="login" method="POST">
-			{% csrf_token %}
- 			<span>
- 				<i class="fa fa-user"></i>
- 				<input type="text" placeholder="Username" name="username">
- 			</span><br>
- 			<span>
- 				<i class="fa fa-lock"></i>
- 				<input type="password" placeholder="password" name="password">
- 			</span><br>
- 				<button>login</button>
- 		</form>
- 	</div>
-	</div>
+    <div class="header">
+        <h1>Lo<span>gin</span></h1>
+    </div>
+    <div class="main">
+        <form action="login" method="POST">
+            {% csrf_token %}
+            <span>
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Username" name="username">
+            </span><br>
+            <span>
+                <i class="fa fa-lock"></i>
+                <input type="password" placeholder="password" name "password">
+            </span><br>
+                <button>login</button>
+        </form>
+    </div>
  </div>
+
+ <div class="overlay">
+     <div class="messages">
+         {% if messages %}
+             <ul>
+                 {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                 {% endfor %}
+             </ul>
+         {% endif %}
+     </div>
+ </div>
+
  <style>
-	body {
-		background-image: url('https://wallpapercave.com/wp/wp2939900.jpg');
-	}
+    body {
+        background-image: url('https://wallpapercave.com/wp/wp2939900.jpg');
+    }
  </style>
 </body>
 </html>
