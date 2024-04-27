@@ -14,6 +14,7 @@ from django.conf import settings
 from .models import PdfFile
 from django.shortcuts import render
 
+
 def index(request):
     #context={'file':PdfFile.objects.all()}
     return render(request, 'templates/index.html')
@@ -24,40 +25,44 @@ def signup(request):
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
-        if User.objects.filter(username=username):
-            messages.error(request, "Username Already Taken")
+        # Additional Validation: Check if the password meets your requirements
+        if len(password) < 8:
+            messages.error(request, "Password must be at least 8 characters long.")
             return redirect('home')
 
-        if User.objects.filter(email=email):
-            messages.error(request, "Email Already Taken")
+        # Check if username or email are already taken
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already taken.")
             return redirect('home')
-        
-        if len(username)>10:
-            messages.error(request, "Username Must Not Be Under 10 Characters")
-        
-        if password!=password2:
-            messages.error(request, "Password Do Not Match!")
 
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already taken.")
+            return redirect('home')
+
+        # Check if passwords match
+        if password != password2:
+            messages.error(request, "Passwords do not match.")
+            return redirect('home')
+
+        # Check if the username is alphanumeric
         if not username.isalnum():
-            messages.error(request, "Username Must be Alpha-Numeric")
-            return redirect(request, 'home')
+            messages.error(request, "Username must be alphanumeric.")
+            return redirect('home')
 
-
+        # Create a new user
         myuser = User.objects.create_user(username=username, email=email, password=password)
-        myuser.save()
-        messages.success(request, 'Account Successfully Created')
 
-        #Welcome Email
-
+        # Send a welcome email
         subject = "Welcome to FIN7 Login"
-        message = ("Hello" + username + "!!\n" + "Confirmation Email sent to your email address\n" + "Check your Inbox to activate your account")
+        message = f"Hello, {username}!\nConfirmation Email sent to your email address.\nCheck your inbox to activate your account."
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
+
+        messages.success(request, 'Account successfully created')
         return redirect('login')
 
     return render(request, 'signup.html')
-
 
 def loginpage(request):
     if request.method == 'POST':
@@ -66,8 +71,9 @@ def loginpage(request):
 
         try:
             user = User.objects.get(username=username)
-        except:
+        except User.DoesNotExist:
             messages.error(request, 'User does not exist')
+            return render(request, 'login.html')  # Return early if the user doesn't exist
 
         user = authenticate(request, username=username, password=password)
 
@@ -77,7 +83,6 @@ def loginpage(request):
         else:
             messages.error(request, 'Username or Password does not exist')
 
-        
     return render(request, 'login.html')
 
 def logoutUser(request):
@@ -125,6 +130,15 @@ def upload_pdf(request):
         return redirect('pdf_list')
     return render(request, 'upload_pdf.html')
 
+
+def linkedin_profile(request):
+    print(request.user)
+    linkedln_handle = "Eric Ndivo"
+    linkedln_url = f"https://www.linkedin.com/in/eric-ndivo/"
+    
+    return HttpResponseRedirect(linkedln_url)
+
+
 def download_pdf(request):
     pdf = pdf.objects.first()
     response = HttpResponse(pdf.file, content_type='application/pdf')
@@ -139,13 +153,6 @@ def blog(request):
 
 def homepage(request):
     return redirect('/')
-
-def linkedin_profile(request):
-    print(request.user)
-    linkedln_handle = "Eric Ndivo"
-    linkedln_url = f"https://www.linkedin.com/in/eric-ndivo/"
-    
-    return HttpResponseRedirect(linkedln_url)
 
 def instagram(request):
     instagram_handle = "eric.ndivo"
