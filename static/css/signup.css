@@ -1,4 +1,4 @@
-body {
+sbody {
 	font-family: sans-serif;
 	background-repeat: no-repeat;
 	overflow: hidden;
@@ -7,8 +7,8 @@ body {
 
 .container {
 	width: 380px;
-	margin:7% auto;
-	border-radius: 25px;
+	margin:6% auto;
+	border-radius: 9px;
 	background-color: rgba(0,0,0,0.1);
 	box-shadow: 0 0 17px #333;
 }
@@ -46,7 +46,7 @@ span{
 
 .main button {
 	padding-left: 0;
-	background-color: #f9004d;
+	background-color: #e4dbde;
 	letter-spacing: 1px;
 	font-weight: bold;
 	margin-bottom: 70px;
@@ -54,11 +54,10 @@ span{
 
 .main button:hover {
 	box-shadow: 2px 2px 5px #555;
-	background-color: #f9004d;
 }
 .main input:hover {
 	box-shadow: 2px 2px 5px #555;
-	background-color: #f9004d;
+	background-color: #ece5e7;
 }
 
 .main span {

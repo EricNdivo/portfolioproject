@@ -15,8 +15,8 @@ from .models import PdfFile
 from django.shortcuts import render
 
 def index(request):
-    context={'file':PdfFile.objects.all()}
-    return render(request, 'templates/index.html', context)
+    #context={'file':PdfFile.objects.all()}
+    return render(request, 'templates/index.html')
 def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
