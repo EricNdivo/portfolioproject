@@ -46,7 +46,7 @@ span{
 
 .main button {
 	padding-left: 0;
-	background-color: #75bdf0;
+	background-color: #e4e7e9;
 	letter-spacing: 1px;
 	font-weight: bold;
 	margin-bottom: 70px;
@@ -54,7 +54,7 @@ span{
 
 .main button:hover {
 	box-shadow: 2px 2px 5px #555;
-	background-color: #f9004d;
+	background-color: #eee7ea;
 }
 .main input:hover {
 	box-shadow: 2px 2px 5px #555;
