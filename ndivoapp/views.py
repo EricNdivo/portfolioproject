@@ -25,34 +25,28 @@ def signup(request):
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
-        # Additional Validation: Check if the password meets your requirements
         if len(password) < 8:
             messages.error(request, "Password must be at least 8 characters long.")
-            return redirect('home')
+            return redirect('signup.html')
 
-        # Check if username or email are already taken
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already taken.")
-            return redirect('home')
+            return redirect('signup.html')
 
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email already taken.")
-            return redirect('home')
+            return redirect('signup.html')
 
-        # Check if passwords match
         if password != password2:
             messages.error(request, "Passwords do not match.")
-            return redirect('home')
+            return redirect('signup.html')
 
-        # Check if the username is alphanumeric
         if not username.isalnum():
             messages.error(request, "Username must be alphanumeric.")
-            return redirect('home')
+            return redirect('signup.html')
 
-        # Create a new user
         myuser = User.objects.create_user(username=username, email=email, password=password)
 
-        # Send a welcome email
         subject = "Welcome to FIN7 Login"
         message = f"Hello, {username}!\nConfirmation Email sent to your email address.\nCheck your inbox to activate your account."
         from_email = settings.EMAIL_HOST_USER
@@ -73,7 +67,7 @@ def loginpage(request):
             user = User.objects.get(username=username)
         except User.DoesNotExist:
             messages.error(request, 'User does not exist')
-            return render(request, 'login.html')  # Return early if the user doesn't exist
+            return render(request, 'login.html')  
 
         user = authenticate(request, username=username, password=password)
 
