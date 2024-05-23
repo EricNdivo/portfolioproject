@@ -132,7 +132,6 @@ def linkedin_profile(request):
     
     return HttpResponseRedirect(linkedln_url)
 
-
 def download_pdf(request):
     pdf = pdf.objects.first()
     response = HttpResponse(pdf.file, content_type='application/pdf')
@@ -160,7 +159,6 @@ def x(request):
     x_url = f"https://www.x.com/j_69whiskey/"
     
     return HttpResponseRedirect(x_url)
-
 
 def webdev(request):
     print(request.user)
