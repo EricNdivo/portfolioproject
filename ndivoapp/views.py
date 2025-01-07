@@ -18,7 +18,7 @@ from django.shortcuts import render
 def index(request):
     #context={'file':PdfFile.objects.all()}
     return render(request, 'templates/index.html')
-def signup(request):
+'''def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -82,7 +82,7 @@ def loginpage(request):
 def logoutUser(request):
     logout(request)
     messages.success(request, 'Successfully logged out')
-    return redirect('/')
+    return redirect('/')'''
 
 def contact(request):
     print(request.user)
@@ -174,10 +174,6 @@ def readmore(request):
     print(request.user)
     return HttpResponse("In Development")
 
-
-def hire(request):
-    print(request.user)
-    return render(request, 'hire.html')
 
 
 

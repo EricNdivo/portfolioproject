@@ -8,8 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <style>
+        .contact-img img {
+            transform: translateX(100%);
+            transition: transform 1s ease-in-out;
+        }
+        body.loaded .contact-img img {
+            transform: translateX(0);
+        }
+    </style>
 </head>
-<body>
+<body onload="document.body.classList.add('loaded')">
     <section class="contact">
         <div class="contact-form">
             <h1>About<span>Eric</span></h1>
